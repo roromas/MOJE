@@ -1,12 +1,324 @@
-html
 <!DOCTYPE html>
-<html lang="cs">
+<html lang="cs" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <title>Moje první stránka</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AudioServis - Profesionální opravy kabelů Praha</title>
+    <meta name="description" content="Profesionální opravy a servis audio kabelů pro muzikanty, zvukaře a nahrávací studia v Praze.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        amber: {
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                        },
+                        slate: {
+                            850: '#151e2e',
+                            900: '#0f172a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Custom background pattern for audio vibe */
+        .bg-pattern {
+            background-color: #0f172a;
+            background-image: radial-gradient(#334155 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+    </style>
 </head>
-<body>
-    <h1>Ahoj světe!</h1>
-    <p>Tento web běží na GitHub Pages.</p>
+<body class="bg-slate-900 text-slate-300 font-sans antialiased selection:bg-amber-500 selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-slate-900/90 backdrop-blur-md z-50 border-b border-slate-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0 font-bold text-xl text-white tracking-tight flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-amber-500" style="transform: rotate(22.5deg);">
+                        <!-- Kabel -->
+                        <path d="M2 12 H0" />
+                        <!-- Tělo konektoru -->
+                        <rect x="2" y="9" width="8" height="6" rx="1.5" />
+                        <!-- Sleeve (Kostra) -->
+                        <path d="M10 10.5 h4.5 v3 h-4.5 z" />
+                        <!-- Ring (Kroužek) -->
+                        <path d="M15.5 10.5 h1.5 v3 h-1.5 z" />
+                        <!-- Tip (Špička) -->
+                        <path d="M18 10.5 h1.5 a1.5 1.5 0 0 1 1.5 1.5 v0 a1.5 1.5 0 0 1 -1.5 1.5 H18 z" />
+                    </svg>
+                    Audio<span class="text-amber-500">Servis</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#sluzby" class="hover:text-amber-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">Služby</a>
+                        <a href="#cenik" class="hover:text-amber-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">Ceník</a>
+                        <a href="#kontakt" class="bg-amber-500 text-slate-900 hover:bg-amber-400 transition-colors px-4 py-2 rounded-md text-sm font-semibold shadow-lg shadow-amber-500/20">Kontakt</a>
+                    </div>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-slate-300 hover:text-white focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-800 border-b border-slate-700">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#sluzby" class="block hover:bg-slate-700 hover:text-white px-3 py-2 rounded-md text-base font-medium">Služby</a>
+                <a href="#cenik" class="block hover:bg-slate-700 hover:text-white px-3 py-2 rounded-md text-base font-medium">Ceník</a>
+                <a href="#kontakt" class="block text-amber-500 px-3 py-2 rounded-md text-base font-medium">Kontakt</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-pattern border-b border-slate-800">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-slate-900"></div>
+        <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <span class="text-amber-500 font-semibold tracking-wider uppercase text-sm mb-4 block">Praha a okolí</span>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+                Profesionální opravy a servis <br class="hidden md:block" />
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-600">audio kabelů</span>
+            </h1>
+            <p class="mt-4 text-xl text-slate-400 max-w-2xl mx-auto mb-10">
+                Neházejte drahé kabely do koše. Nabízím precizní ruční pájení, diagnostiku a výměnu konektorů pro muzikanty, zvukaře a studia.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#cenik" class="bg-amber-500 text-slate-900 hover:bg-amber-400 px-8 py-3 rounded-lg font-bold text-lg transition-all shadow-[0_0_20px_rgba(245,158,11,0.3)] hover:shadow-[0_0_25px_rgba(245,158,11,0.5)]">
+                    Zobrazit ceník
+                </a>
+                <a href="#kontakt" class="bg-slate-800 border border-slate-700 text-white hover:bg-slate-700 px-8 py-3 rounded-lg font-semibold text-lg transition-all">
+                    Domluvit opravu
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Services / About Section -->
+    <section id="sluzby" class="py-20 bg-slate-900">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-white mb-4">Proč opravovat u mě?</h2>
+                <div class="w-24 h-1 bg-amber-500 mx-auto rounded"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-slate-850 p-8 rounded-2xl border border-slate-800 hover:border-slate-600 transition-colors group">
+                    <div class="w-14 h-14 bg-slate-800 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-fire text-2xl text-amber-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Precizní pájení</h3>
+                    <p class="text-slate-400">
+                        Ke každému spoji přistupuji maximálně pečlivě. Používám kvalitní pájku s příměsí stříbra pro co nejlepší vodivost a dlouhou životnost spoje i v náročných tour podmínkách.
+                    </p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="bg-slate-850 p-8 rounded-2xl border border-slate-800 hover:border-slate-600 transition-colors group">
+                    <div class="w-14 h-14 bg-slate-800 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-microchip text-2xl text-amber-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Kvalitní komponenty</h3>
+                    <p class="text-slate-400">
+                        Na poškozené kabely instaluji pouze ověřený průmyslový standard. Primárně pracuji s prémiovými konektory značek <strong class="text-slate-200">Neutrik</strong> a <strong class="text-slate-200">Amphenol</strong>.
+                    </p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="bg-slate-850 p-8 rounded-2xl border border-slate-800 hover:border-slate-600 transition-colors group">
+                    <div class="w-14 h-14 bg-slate-800 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-wave-square text-2xl text-amber-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Profi diagnostika</h3>
+                    <p class="text-slate-400">
+                        Každý kabel před předáním prochází důkladnou kontrolou na profesionálních testerech (Behringer, Millenium). Zkouším polaritu, zkraty i mikro-přerušení při ohybu.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="cenik" class="py-20 bg-slate-850 border-y border-slate-800">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-white mb-4">Ceník prací</h2>
+                <p class="text-slate-400">Férové ceny za záchranu vaší výbavy. Platíte pouze za to, co je skutečně potřeba opravit.</p>
+                <div class="w-24 h-1 bg-amber-500 mx-auto rounded mt-6"></div>
+            </div>
+
+            <div class="bg-slate-900 rounded-2xl shadow-xl overflow-hidden border border-slate-700">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-slate-800 text-slate-200 text-sm uppercase tracking-wider">
+                                <th class="p-4 sm:p-6 font-semibold">Typ úkonu (na 1 konektor)</th>
+                                <th class="p-4 sm:p-6 font-semibold text-right">Cena práce</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-800/50">
+                            <tr class="hover:bg-slate-800/30 transition-colors">
+                                <td class="p-4 sm:p-6">
+                                    <div class="font-medium text-white mb-1">Standardní audio</div>
+                                    <div class="text-sm text-slate-400">XLR, TS/TRS Jack 6.3mm, RCA (Cinch)</div>
+                                </td>
+                                <td class="p-4 sm:p-6 text-right font-bold text-amber-400 whitespace-nowrap">
+                                    120 – 150 Kč
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-slate-800/30 transition-colors">
+                                <td class="p-4 sm:p-6">
+                                    <div class="font-medium text-white mb-1">Miniaturní / Složité</div>
+                                    <div class="text-sm text-slate-400">Jack 3.5mm, MIDI/DIN, specifické piny</div>
+                                </td>
+                                <td class="p-4 sm:p-6 text-right font-bold text-amber-400 whitespace-nowrap">
+                                    150 – 200 Kč
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-slate-800/30 transition-colors">
+                                <td class="p-4 sm:p-6">
+                                    <div class="font-medium text-white mb-1">Silové a reproduktorové</div>
+                                    <div class="text-sm text-slate-400">Speakon, Powercon</div>
+                                </td>
+                                <td class="p-4 sm:p-6 text-right font-bold text-amber-400 whitespace-nowrap">
+                                    100 – 130 Kč
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-slate-800/30 transition-colors">
+                                <td class="p-4 sm:p-6">
+                                    <div class="font-medium text-white mb-1">Diagnostika</div>
+                                    <div class="text-sm text-slate-400">Proměření testerem při převzetí / odevzdání</div>
+                                </td>
+                                <td class="p-4 sm:p-6 text-right font-bold text-emerald-400 whitespace-nowrap">
+                                    Zdarma k opravě
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="mt-6 flex items-start gap-3 bg-slate-800/50 p-4 rounded-lg border border-slate-700/50">
+                <i class="fa-solid fa-circle-info text-amber-500 mt-1"></i>
+                <p class="text-sm text-slate-400">
+                    <strong class="text-slate-300">Důležité upozornění:</strong> Uvedené ceny jsou pouze za <span class="text-slate-200 border-b border-slate-500">práci</span> (zkrácení, odizolování, příprava a pájení 1 kusu konektoru). Pokud je nutné použít zcela nový konektor, jeho <span class="text-slate-200 border-b border-slate-500">cena za materiál se přičítá k ceně práce</span>. O nutnosti výměny vás vždy informuji předem.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="kontakt" class="py-20 bg-slate-900">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-slate-800 rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row">
+                
+                <div class="md:w-1/2 p-10 md:p-16 bg-gradient-to-br from-slate-800 to-slate-900 flex flex-col justify-center">
+                    <h2 class="text-3xl font-bold text-white mb-2">Potřebujete opravu?</h2>
+                    <p class="text-slate-400 mb-8">Neváhejte se ozvat. Domluvíme se na předání kabelů a co nejdříve je vrátím zpět do akce.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-4 group">
+                            <div class="w-12 h-12 bg-slate-700 rounded-full flex items-center justify-center text-amber-500 group-hover:bg-amber-500 group-hover:text-slate-900 transition-colors">
+                                <i class="fa-solid fa-location-dot text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-semibold text-slate-400">Místo působnosti</h4>
+                                <p class="text-lg text-white">Praha (osobní předání dle domluvy)</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center gap-4 group">
+                            <div class="w-12 h-12 bg-slate-700 rounded-full flex items-center justify-center text-amber-500 group-hover:bg-amber-500 group-hover:text-slate-900 transition-colors">
+                                <i class="fa-solid fa-envelope text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-semibold text-slate-400">E-mail</h4>
+                                <a href="mailto:servis@vasemail.cz" class="text-lg text-white hover:text-amber-400 transition-colors">servis@vasemail.cz</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4 group">
+                            <div class="w-12 h-12 bg-slate-700 rounded-full flex items-center justify-center text-amber-500 group-hover:bg-amber-500 group-hover:text-slate-900 transition-colors">
+                                <i class="fa-solid fa-phone text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-semibold text-slate-400">Telefon</h4>
+                                <a href="tel:+420123456789" class="text-lg text-white hover:text-amber-400 transition-colors">+420 123 456 789</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Visual / Map area -->
+                <div class="md:w-1/2 relative min-h-[300px] bg-slate-950 flex items-center justify-center overflow-hidden">
+                    <!-- Fake abstract "audio cable" graphics -->
+                    <div class="absolute inset-0 opacity-20">
+                        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M-100 200 C 150 100, 300 400, 700 150" fill="transparent" stroke="#f59e0b" stroke-width="8"/>
+                            <path d="M-50 250 C 200 350, 400 50, 800 250" fill="transparent" stroke="#94a3b8" stroke-width="4"/>
+                        </svg>
+                    </div>
+                    <div class="z-10 text-center px-6">
+                        <i class="fa-solid fa-headphones text-6xl text-slate-700 mb-4 block"></i>
+                        <h3 class="text-xl font-semibold text-slate-300">Vaše kabely jsou u mě v bezpečí.</h3>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 py-8 border-t border-slate-800 text-center">
+        <p class="text-slate-500 text-sm">
+            &copy; <span id="year"></span> AudioServis Praha. Vytvořeno pro profesionální zvuk. <br class="sm:hidden" />
+            <span class="text-slate-700 mt-2 inline-block">IČO: 12345678 (Doplníte vlastní)</span>
+        </p>
+    </footer>
+
+    <!-- Scripts for interactivity -->
+    <script>
+        // Update year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Mobile menu toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+    </script>
 </body>
 </html>
