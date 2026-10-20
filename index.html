@@ -1,404 +1,355 @@
 <!DOCTYPE html>
-<html lang="cs" class="scroll-smooth">
+<html lang="cs">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AudioServis Kůs Tomáš – Oprava a zakázková výroba audio kabelů | Praha a Zásilkovna</title>
-    <meta name="description" content="Profesionální opravy a zakázková výroba audio kabelů v Praze a s možností zaslání Zásilkovnou po celé ČR.">
-    
-    <link rel="icon" type="image/jpeg" href="logo.jpg">
-
-    <!-- SEO & Vyhledávače -->
-    <meta name="keywords" content="oprava audiokabelu, vyroba audiokabelu, oprava kabely jack xlr, oprava kabeláže, audioservis praha, kustom audio, neutrik, oprava jack, oprava kabelu">
-    <meta name="robots" content="index, follow">
-
-    <!-- Open Graph tagy pro hezké náhledy při sdílení (Facebook, WhatsApp, Messenger) -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://kustom.cz/">
-    <meta property="og:title" content="AudioServis – Oprava a zakázková výroba audio kabelů">
-    <meta property="og:description" content="Profesionální opravy a zakázková výroba audio kabelů pro muzikanty, zvukaře a nahrávací studia v Praze a s možností zaslání Zásilkovnou.">
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        amber: {
-                            400: '#fbbf24',
-                            500: '#f59e0b',
-                            600: '#d97706',
-                        },
-                        slate: {
-                            850: '#151e2e',
-                            900: '#0f172a',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101317">
+  <title>Kustom.cz | Opravy audio kabelů a zakázková kabeláž</title>
+  <meta name="description" content="Opravy audio kabelů, výměny konektorů a zakázková výroba kabeláže pro zvukaře, půjčovny techniky, studia, kluby a kapely. Praha i zaslání přes Zásilkovnu.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://kustom.cz/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://kustom.cz/">
+  <meta property="og:title" content="Kustom.cz | Servis a výroba audio kabeláže">
+  <meta property="og:description" content="Opravy kabelů, výměny konektorů a zakázková výroba kabeláže pro profesionální audio provoz.">
+  <link rel="icon" type="image/jpeg" href="logo.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root{--bg:#101317;--panel:#171c22;--panel2:#1d242c;--line:#303943;--text:#f4f6f8;--muted:#a8b1bb;--accent:#ffb52e;--accent2:#ffd071;--max:1160px}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:90px}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:"DM Sans",sans-serif;line-height:1.65}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    button,input,select,textarea{font:inherit}
+    .wrap{width:min(var(--max),calc(100% - 40px));margin-inline:auto}
+    .eyebrow{color:var(--accent);font-size:.76rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
+    h1,h2,h3,h4{font-family:Manrope,sans-serif;line-height:1.15;letter-spacing:-.035em;margin:0}
+    h1{font-size:clamp(2.65rem,6.2vw,5.4rem);font-weight:800;max-width:850px}
+    h2{font-size:clamp(2rem,4vw,3.2rem);font-weight:800}
+    h3{font-size:1.24rem}
+    p{margin:0}
+    .muted{color:var(--muted)}
+    .accent{color:var(--accent)}
+    .topbar{background:#0a0c0f;border-bottom:1px solid #252b32;font-size:.83rem;color:#c3cad1}
+    .topbar .wrap{display:flex;justify-content:space-between;gap:16px;padding:9px 0;flex-wrap:wrap}
+    .topbar i{color:var(--accent);margin-right:7px}
+    .nav{position:sticky;top:0;z-index:20;background:rgba(16,19,23,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+    .nav-inner{height:78px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{display:flex;align-items:center;gap:12px;font-family:Manrope,sans-serif;font-weight:800;font-size:1.12rem;letter-spacing:-.03em}
+    .brand img{width:44px;height:44px;object-fit:cover;border-radius:10px;border:1px solid #3b434c}
+    .brand small{display:block;font-family:"DM Sans",sans-serif;color:var(--muted);font-size:.68rem;font-weight:500;letter-spacing:.05em;text-transform:uppercase}
+    .nav-links{display:flex;align-items:center;gap:28px;font-size:.92rem;font-weight:600}
+    .nav-links a:not(.btn):hover{color:var(--accent)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 20px;border-radius:9px;font-weight:800;transition:transform .18s,background .18s,border-color .18s;cursor:pointer;border:1px solid transparent}
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{background:var(--accent);color:#17130b;box-shadow:0 8px 26px #ffb52e20}
+    .btn-primary:hover{background:var(--accent2)}
+    .btn-secondary{border-color:#47515c;background:#1b2128;color:var(--text)}
+    .btn-secondary:hover{border-color:var(--accent)}
+    .menu-btn{display:none;background:none;border:1px solid var(--line);color:white;border-radius:8px;padding:10px 12px}
+    .hero{position:relative;overflow:hidden;padding:100px 0 76px;background:radial-gradient(ellipse at 80% 10%,#ffb52e16,transparent 35%),linear-gradient(135deg,#12171c 0%,#101317 60%,#171b20 100%);border-bottom:1px solid var(--line)}
+    .hero:after{content:"";position:absolute;width:420px;height:420px;right:-180px;bottom:-260px;border:1px solid #ffb52e30;border-radius:50%;box-shadow:0 0 0 45px #ffb52e08,0 0 0 90px #ffb52e05;pointer-events:none}
+    .hero-grid{display:grid;grid-template-columns:1.35fr .65fr;align-items:center;gap:56px;position:relative;z-index:1}
+    .hero h1{margin:18px 0 24px}
+    .hero h1 span{color:var(--accent)}
+    .hero-copy{font-size:1.15rem;max-width:690px;color:#c0c8d0;line-height:1.75}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+    .trustline{display:flex;flex-wrap:wrap;gap:18px 24px;margin-top:28px;color:#c0c8d0;font-size:.88rem}
+    .trustline i{color:var(--accent);margin-right:7px}
+    .hero-card{background:linear-gradient(160deg,#202832,#171c22);border:1px solid #3a434d;border-radius:18px;padding:28px;box-shadow:0 25px 70px #0005}
+    .hero-card .card-kicker{color:var(--accent);font-weight:800;font-size:.76rem;letter-spacing:.12em;text-transform:uppercase}
+    .hero-card h3{font-size:1.55rem;margin:12px 0}
+    .hero-card p{color:var(--muted);font-size:.95rem}
+    .hero-card ul{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:13px}
+    .hero-card li{display:flex;gap:11px;align-items:flex-start;color:#e5e9ed;font-size:.91rem}
+    .hero-card li i{color:var(--accent);margin-top:5px}
+    .section{padding:88px 0;border-bottom:1px solid #252c34}
+    .section-head{max-width:760px;margin-bottom:42px}
+    .section-head.center{text-align:center;margin-inline:auto}
+    .section-head .eyebrow{margin-bottom:14px;display:block}
+    .section-head p{margin-top:16px;color:var(--muted);font-size:1.05rem}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .service{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:27px;transition:border-color .2s,transform .2s}
+    .service:hover{border-color:#8c6a2a;transform:translateY(-3px)}
+    .iconbox{width:48px;height:48px;display:grid;place-items:center;background:#ffb52e17;color:var(--accent);border-radius:12px;font-size:1.2rem;margin-bottom:22px}
+    .service h3{margin-bottom:12px}
+    .service p{color:var(--muted);font-size:.94rem}
+    .service ul{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:8px;color:#d7dde3;font-size:.87rem}
+    .service li:before{content:"✓";color:var(--accent);font-weight:800;margin-right:9px}
+    .business{background:#151a20}
+    .business-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
+    .business-copy p{color:var(--muted);margin-top:18px}
+    .benefits{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .benefit{padding:21px;background:var(--panel);border:1px solid var(--line);border-radius:12px}
+    .benefit i{color:var(--accent);font-size:1.1rem;margin-bottom:13px}
+    .benefit h3{font-size:1rem;letter-spacing:-.02em;margin-bottom:8px}
+    .benefit p{color:var(--muted);font-size:.88rem}
+    .callout{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:28px 30px;margin-top:32px;border:1px solid #8b672a;background:linear-gradient(100deg,#2a2418,#1a1e23);border-radius:14px}
+    .callout h3{font-size:1.25rem;margin-bottom:8px}
+    .callout p{color:#c7cbd0;font-size:.92rem}
+    .price-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .price-card{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:30px}
+    .price-card h3{margin-bottom:9px}
+    .price-intro{font-size:.9rem;color:var(--muted);margin-bottom:22px}
+    .price-row{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;padding:17px 0;border-bottom:1px solid #303740}
+    .price-row:last-child{border-bottom:0;padding-bottom:0}
+    .price-row strong{display:block;color:#f2f4f6;font-size:.95rem}
+    .price-row small{display:block;color:var(--muted);font-size:.82rem;margin-top:5px;line-height:1.5}
+    .price{color:var(--accent);font-family:Manrope,sans-serif;font-size:1.15rem;font-weight:800;white-space:nowrap}
+    .note{padding:15px 16px;border:1px solid #705727;background:#ffb52e12;border-radius:10px;color:#e8d4a8;font-size:.87rem;margin-top:22px}
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;counter-reset:step}
+    .step{position:relative;padding:23px 20px;background:var(--panel);border:1px solid var(--line);border-radius:13px;counter-increment:step}
+    .step:before{content:"0" counter(step);display:block;color:var(--accent);font-family:Manrope,sans-serif;font-size:1.55rem;font-weight:800;margin-bottom:18px}
+    .step h3{font-size:1.02rem;margin-bottom:9px}
+    .step p{font-size:.88rem;color:var(--muted)}
+    .contact{background:#151a20}
+    .contact-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:38px;align-items:start}
+    .contact-info{display:grid;gap:13px;margin-top:26px}
+    .contact-item{display:flex;gap:15px;padding:19px;background:var(--panel);border:1px solid var(--line);border-radius:12px}
+    .contact-item .iconbox{flex:0 0 42px;width:42px;height:42px;margin:0}
+    .contact-item h3{font-size:1rem;margin:1px 0 5px}
+    .contact-item p,.contact-item a{font-size:.9rem;color:var(--muted);overflow-wrap:anywhere}
+    .contact-item a:hover{color:var(--accent)}
+    .form-card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:30px}
+    .form-card h3{font-size:1.45rem;margin-bottom:8px}
+    .form-card>p{color:var(--muted);font-size:.92rem;margin-bottom:23px}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+    .field{display:grid;gap:7px}
+    .field.full{grid-column:1/-1}
+    label{font-size:.82rem;font-weight:700;color:#dce1e6}
+    input,select,textarea{width:100%;background:#101419;border:1px solid #3a434d;border-radius:8px;padding:12px 13px;color:#f4f6f8;outline:none}
+    input:focus,select:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px #ffb52e18}
+    textarea{resize:vertical;min-height:120px}
+    .form-card .btn{width:100%;margin-top:17px}
+    .form-small{font-size:.77rem;color:#929ca7;margin-top:12px}
+    footer{padding:26px 0;color:#89939e;font-size:.82rem}
+    footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+    .footer-links{display:flex;gap:18px}
+    .footer-links a:hover{color:var(--accent)}
+    :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+    @media(max-width:900px){.hero-grid,.business-grid,.contact-grid{grid-template-columns:1fr}.hero-grid{gap:36px}.hero-card{max-width:620px}.grid-3{grid-template-columns:1fr 1fr}.service:last-child{grid-column:1/-1}.steps{grid-template-columns:1fr 1fr}.business-grid{gap:30px}}
+    @media(max-width:650px){.wrap{width:min(var(--max),calc(100% - 30px))}.topbar .wrap{font-size:.76rem}.nav-inner{height:68px}.brand{font-size:.94rem;gap:9px}.brand img{width:38px;height:38px}.brand small{font-size:.6rem}.menu-btn{display:block}.nav-links{display:none;position:absolute;top:68px;left:0;right:0;padding:16px 20px 20px;background:#101317;border-bottom:1px solid var(--line);align-items:stretch;gap:6px;flex-direction:column}.nav-links.open{display:flex}.nav-links a{padding:10px 8px}.nav-links .btn{margin-top:5px}.hero{padding:70px 0 55px}.hero-copy{font-size:1rem}.hero-actions{align-items:stretch;flex-direction:column}.hero-actions .btn{width:100%}.trustline{display:grid;gap:10px}.section{padding:65px 0}.section-head{margin-bottom:30px}.grid-3,.price-grid,.benefits,.steps{grid-template-columns:1fr}.service:last-child{grid-column:auto}.service{padding:23px}.callout{align-items:stretch;flex-direction:column;padding:23px}.callout .btn{width:100%}.price-card,.form-card{padding:22px}.price-row{gap:12px}.price-row strong{font-size:.88rem}.price{font-size:1rem}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}footer .wrap{flex-direction:column}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+  </style>
 </head>
+<body>
+  <div class="topbar">
+    <div class="wrap">
+      <span><i class="fa-solid fa-location-dot" aria-hidden="true"></i>Praha a zasílání po celé ČR</span>
+      <span><i class="fa-solid fa-envelope" aria-hidden="true"></i><a href="mailto:info@kustom.cz">info@kustom.cz</a> &nbsp;·&nbsp; <i class="fa-solid fa-phone" aria-hidden="true"></i><a href="tel:+420721671762">+420 721 671 762</a></span>
+    </div>
+  </div>
+  <nav class="nav" aria-label="Hlavní navigace">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#domu" aria-label="Kustom.cz – úvodní stránka">
+        <img src="logo.jpg" alt="Logo Kustom.cz">
+        <span>KUSTOM<span class="accent">.CZ</span><small>Servis audio kabeláže</small></span>
+      </a>
+      <button class="menu-btn" id="mobile-menu-btn" aria-label="Otevřít navigaci" aria-expanded="false" aria-controls="nav-links"><i class="fa-solid fa-bars" aria-hidden="true"></i></button>
+      <div class="nav-links" id="nav-links">
+        <a href="#sluzby">Služby</a>
+        <a href="#firmy">Pro firmy</a>
+        <a href="#cenik">Ceník</a>
+        <a href="#postup">Jak to funguje</a>
+        <a class="btn btn-primary" href="#kontakt"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Poptat zakázku</a>
+      </div>
+    </div>
+  </nav>
 
-<body class="bg-slate-900 text-slate-300 font-sans antialiased selection:bg-amber-500 selection:text-white">
-
-    <!-- Navigation Bar -->
-    <nav class="fixed w-full bg-slate-900/90 backdrop-blur-md z-50 border-b border-slate-800">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <!-- Logo Image (logo.jpg) -->
-                <a href="#" class="flex-shrink-0 font-bold text-lg sm:text-2xl text-white tracking-tight flex items-center gap-2 sm:gap-3">
-                    <img src="logo.jpg" alt="Kustom Logo" class="w-9 h-9 sm:w-10 sm:h-10 rounded-lg object-cover flex-shrink-0 border border-slate-700">
-                    <span>Audio servis <span class="split-a">a</span> <span class="text-amber-500">výroba kabelů</span></span>
-                </a>
-                
-                <!-- Desktop Navigation Links -->
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="#sluzby" class="hover:text-amber-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">Služby</a>
-                        <a href="#cenik" class="hover:text-amber-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">Ceník</a>
-                        <a href="#kontakt" class="bg-amber-500 text-slate-900 hover:bg-amber-400 transition-colors px-4 py-2 rounded-md text-sm font-semibold shadow-lg shadow-amber-500/20">Kontakt</a>
-                    </div>
-                </div>
-                
-                <!-- Mobile menu button -->
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-slate-300 hover:text-white focus:outline-none p-2" aria-label="Menu">
-                        <i class="fa-solid fa-bars text-2xl"></i>
-                    </button>
-                </div>
-            </div>
+  <main id="domu">
+    <header class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="eyebrow">Opravy · výroba · servis</span>
+          <h1>Audio kabeláž, na kterou se <span>můžete spolehnout.</span></h1>
+          <p class="hero-copy">Opravy kabelů, výměny konektorů a zakázková výroba pro zvukaře, půjčovny techniky, studia, kluby i kapely. Od jednoho kabelu po hromadnou zakázku.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#kontakt"><i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i> Nezávazně poptat servis</a>
+            <a class="btn btn-secondary" href="#cenik"><i class="fa-solid fa-list-check" aria-hidden="true"></i> Prohlédnout ceník</a>
+          </div>
+          <div class="trustline">
+            <span><i class="fa-solid fa-check" aria-hidden="true"></i>Opravy a výroba na míru</span>
+            <span><i class="fa-solid fa-check" aria-hidden="true"></i>Konektory Neutrik a Amphenol</span>
+            <span><i class="fa-solid fa-check" aria-hidden="true"></i>Osobní předání Praha 9 i zaslání</span>
+          </div>
         </div>
-        
-        <!-- Mobile Navigation Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-slate-800 border-b border-slate-700">
-            <div class="px-4 pt-2 pb-4 space-y-2">
-                <a href="#sluzby" class="block hover:bg-slate-700 hover:text-white px-3 py-2 rounded-md text-base font-medium">Služby</a>
-                <a href="#cenik" class="block hover:bg-slate-700 hover:text-white px-3 py-2 rounded-md text-base font-medium">Ceník</a>
-                <a href="#kontakt" class="block text-amber-500 font-semibold px-3 py-2 rounded-md text-base">Kontakt</a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <header class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-pattern border-b border-slate-800">
-        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-slate-900"></div>
-        <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <span class="text-amber-500 font-semibold text-base mb-4 block">Praha nebo Zásilkovnou odkudkoli</span>
-            <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight">
-                <span class="text-white block mb-2">Profesionální servis</span>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-600 block mb-2">Zakázková výroba</span>
-                <span class="text-white block">audio kabeláže</span>
-            </h1>
-            
-            <!-- Subtitle -->
-            <p class="mt-6 text-lg sm:text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
-                Rychlé opravy poškozených kabelů, výměna konektorů a precizní ruční výroba kabeláže na míru z nejlepších komponentů pro kapely, zvukaře i nahrávací studia.
-            </p>
-            
-            <!-- Call to Action Buttons -->
-            <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="#kontakt" class="w-full sm:w-auto px-8 py-4 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold rounded-xl transition shadow-lg shadow-amber-500/20 text-center flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-screwdriver-wrench"></i> Poptat opravu či výrobu
-                </a>
-                <a href="#cenik" class="w-full sm:w-auto px-8 py-4 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-semibold rounded-xl transition text-center flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-calculator"></i> Zobrazit ceník
-                </a>
-            </div>
-
-            <!-- Highlights badges -->
-            <div class="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-4 text-left max-w-4xl mx-auto">
-                <div class="p-4 rounded-lg bg-slate-800/50 border border-slate-800/80 flex items-center gap-3">
-                    <i class="fa-solid fa-microscope text-amber-500 text-xl"></i>
-                    <span class="text-xs sm:text-sm text-slate-300 font-medium">Diagnostika k opravě zdarma</span>
-                </div>
-                <div class="p-4 rounded-lg bg-slate-800/50 border border-slate-800/80 flex items-center gap-3">
-                    <i class="fa-solid fa-certificate text-amber-500 text-xl"></i>
-                    <span class="text-xs sm:text-sm text-slate-300 font-medium">Konektory Neutrik & Amphenol</span>
-                </div>
-                <div class="p-4 rounded-lg bg-slate-800/50 border border-slate-800/80 flex items-center gap-3">
-                    <i class="fa-solid fa-box text-amber-500 text-xl"></i>
-                    <span class="text-xs sm:text-sm text-slate-300 font-medium">Příjem přes Zásilkovnu</span>
-                </div>
-            </div>
-
-        </div>
+        <aside class="hero-card">
+          <span class="card-kicker">Pro profesionální provoz</span>
+          <h3>Funkční kabeláž. Méně starostí.</h3>
+          <p>Pomoc s kabeláží, která je každý den v provozu — na akcích, ve studiu i v půjčovně techniky.</p>
+          <ul>
+            <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i><span>Opravy konektorů a poškozených kabelů</span></li>
+            <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i><span>Zakázková výroba a značení kabeláže</span></li>
+            <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i><span>Servis páráků a stageboxů po dohodě</span></li>
+            <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i><span>Individuální nacenění větších zakázek</span></li>
+          </ul>
+        </aside>
+      </div>
     </header>
 
-    <!-- Services Section -->
-    <section id="sluzby" class="py-20 bg-slate-900 border-b border-slate-800">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-extrabold text-white sm:text-4xl">Co pro vás mohu udělat</h2>
-                <p class="mt-3 text-slate-400 max-w-2xl mx-auto">Specializuji se výhradně na kabeláž pro zvukovou techniku. Každý spoj je pečlivě propájen a otestován.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Service 1 -->
-                <div class="bg-slate-850 p-8 rounded-2xl border border-slate-800 hover:border-amber-500/50 transition duration-300">
-                    <div class="w-12 h-12 bg-amber-500/10 rounded-xl flex items-center justify-center text-amber-500 mb-6 text-2xl">
-                        <i class="fa-solid fa-plug"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Opravy konektorů a kabelů</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed mb-4">
-                        Příprava, zkrácení a přepájení poškozených koncových částí. Výměna zničených konektorů za značkové (XLR, TS/TRS Jack 6.3mm / 3.5mm, Speakon, RCA).
-                    </p>
-                    <ul class="text-xs text-slate-400 space-y-2">
-                        <li><i class="fa-solid fa-check text-amber-500 mr-2"></i>Nástrojové a mikrofonní kabely</li>
-                        <li><i class="fa-solid fa-check text-amber-500 mr-2"></i>Reproduktorové vodiče (Speakon)</li>
-                        <li><i class="fa-solid fa-check text-amber-500 mr-2"></i>Miniature & AUX kabely (3.5mm jack)</li>
-                    </ul>
-                </div>
-
-                <!-- Service 2 -->
-                <div class="bg-slate-850 p-8 rounded-2xl border border-amber-500/30 hover:border-amber-500 transition duration-300 relative">
-                    <span class="absolute -top-3 right-6 bg-amber-500 text-slate-900 text-xs font-bold px-3 py-1 rounded-full uppercase">Na míru</span>
-                    <div class="w-12 h-12 bg-amber-500/10 rounded-xl flex items-center justify-center text-amber-500 mb-6 text-2xl">
-                        <i class="fa-solid fa-sliders"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Zakázková výroba kabeláže</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed mb-4">
-                        Výroba kabelů přesně na míru vašim požadavkům. Ideální pro pedalboardy, rackové systémy, domácí i studiová nahrávací pracoviště.
-                    </p>
-                    <ul class="text-xs text-slate-400 space-y-2">
-                        <li><i class="fa-solid fa-check text-amber-500 mr-2"></i>Custom patch kabely do pedalboardů</li>
-                        <li><i class="fa-solid fa-check text-amber-500 mr-2"></i>Kvalitní metráž kabelů</li>
-                        <li><i class="fa-solid fa-check text-amber-500 mr-2"></i>Barevné rozlišení a značení okruhů</li>
-                    </ul>
-                </div>
-
-                <!-- Service 3 -->
-                <div class="bg-slate-850 p-8 rounded-2xl border border-slate-800 hover:border-amber-500/50 transition duration-300">
-                    <div class="w-12 h-12 bg-amber-500/10 rounded-xl flex items-center justify-center text-amber-500 mb-6 text-2xl">
-                        <i class="fa-solid fa-wave-square"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Páráky & Stageboxy</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed mb-4">
-                        Opravy, přepájení a kompletní repase vícežilových kabelů (multipárů) a stageboxů pro kapely, kluby a zvukařské firmy.
-                    </p>
-                    <ul class="text-xs text-slate-400 space-y-2">
-                        <li><i class="fa-solid fa-check text-amber-500 mr-2"></i>Proměření jednotlivých kanálů</li>
-                        <li><i class="fa-solid fa-check text-amber-500 mr-2"></i>Opravy studených spojů a zemnění</li>
-                        <li><i class="fa-solid fa-check text-amber-500 mr-2"></i>Výměny poškozených párů</li>
-                    </ul>
-                </div>
-            </div>
+    <section class="section" id="sluzby">
+      <div class="wrap">
+        <div class="section-head center">
+          <span class="eyebrow">Co pro vás udělám</span>
+          <h2>Servis pro každou část kabeláže</h2>
+          <p>Specializuji se na audio kabeláž. Rozsah a cenu opravy si nejprve vyjasníme podle typu kabelu, konektoru a závady.</p>
         </div>
+        <div class="grid-3">
+          <article class="service">
+            <div class="iconbox"><i class="fa-solid fa-plug" aria-hidden="true"></i></div>
+            <h3>Opravy kabelů a konektorů</h3>
+            <p>Opravy poškozených konců, zkrácení kabelu a výměna vadných konektorů.</p>
+            <ul><li>XLR a Jack 6,3 / 3,5 mm</li><li>RCA, DIN a AUX</li><li>Speakon a další audio konektory</li></ul>
+          </article>
+          <article class="service">
+            <div class="iconbox"><i class="fa-solid fa-ruler-combined" aria-hidden="true"></i></div>
+            <h3>Zakázková výroba</h3>
+            <p>Kabely podle požadované délky, konektorů a způsobu použití.</p>
+            <ul><li>Mikrofonní a nástrojové kabely</li><li>Patch kabely a racková kabeláž</li><li>Barevné rozlišení a značení</li></ul>
+          </article>
+          <article class="service">
+            <div class="iconbox"><i class="fa-solid fa-wave-square" aria-hidden="true"></i></div>
+            <h3>Páráky a stageboxy</h3>
+            <p>Opravy a servis vícežilové kabeláže pro živé ozvučení, kluby a technické provozy.</p>
+            <ul><li>Kontrola jednotlivých kanálů</li><li>Opravy spojů a konektorů</li><li>Rozsah a cena po individuální domluvě</li></ul>
+          </article>
+        </div>
+      </div>
     </section>
 
-    <!-- Pricing Section -->
-    <section id="cenik" class="py-20 bg-slate-900 border-b border-slate-800">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-extrabold text-white sm:text-4xl">Ceník</h2>
-                <p class="text-slate-400 mt-2">Cena je vždy rozdělená na práci a materiál. Víte přesně, za co platíte.</p>
-            </div>
-
-            <!-- Price Tables Grid -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-                
-                <!-- Repair Pricing Card -->
-                <div class="bg-slate-850 rounded-2xl p-6 sm:p-8 border border-slate-800">
-                    <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-3">
-                        <i class="fa-solid fa-wrench text-amber-500"></i> Ceník práce (za 1 konektor)
-                    </h3>
-                    
-                    <div class="space-y-4">
-                        <div class="flex justify-between items-center py-3 border-b border-slate-800">
-                            <div>
-                                <span class="text-white font-medium block">Standardní audio (XLR, Jack 6.3mm, RCA)</span>
-                                <span class="text-xs text-slate-400">Zkrácení, přimájení konektoru na mikrofonní či nástrojový kabel</span>
-                            </div>
-                            <span class="text-amber-500 font-bold text-lg whitespace-nowrap ml-4">90 Kč</span>
-                        </div>
-
-                        <div class="flex justify-between items-center py-3 border-b border-slate-800">
-                            <div>
-                                <span class="text-white font-medium block">Miniaturní konektory (Jack 3.5mm AUX, DIN)</span>
-                                <span class="text-xs text-slate-400">Jemné pájení miniaturních vodičů pro sluchátka a malé konektory</span>
-                            </div>
-                            <span class="text-amber-500 font-bold text-lg whitespace-nowrap ml-4">120 Kč</span>
-                        </div>
-
-                        <div class="flex justify-between items-center py-3 border-b border-slate-800">
-                            <div>
-                                <span class="text-white font-medium block">Silové a reproduktorové (Speakon, Powercon)</span>
-                                <span class="text-xs text-slate-400">Montáž a pájení silnějších vodičů reproduktorových kabinetů</span>
-                            </div>
-                            <span class="text-amber-500 font-bold text-lg whitespace-nowrap ml-4">100 Kč</span>
-                        </div>
-
-                        <div class="flex justify-between items-center py-3">
-                            <div>
-                                <span class="text-white font-medium block">Multipáry / Stageboxy (páráky)</span>
-                                <span class="text-xs text-slate-400">Náročné vícežilové přepájení pinů</span>
-                            </div>
-                            <span class="text-amber-500 font-bold text-lg whitespace-nowrap ml-4">Dohodou</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Custom Cables Pricing Card -->
-                <div class="bg-slate-850 rounded-2xl p-6 sm:p-8 border border-slate-800">
-                    <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-3">
-                        <i class="fa-solid fa-cable-car text-amber-500"></i> Zakázková výroba nových kabelů
-                    </h3>
-                    
-                    <p class="text-slate-400 text-sm mb-6">
-                        Konečná cena nového kabelu se skládá z ceny vybraného materiálu + ceny za odbornou kompletaci.
-                    </p>
-
-                    <div class="space-y-4">
-                        <div class="p-4 bg-slate-900 rounded-xl border border-slate-800">
-                            <span class="text-white font-bold block mb-1">1. Materiál (Konektory + Metráž)</span>
-                            <span class="text-xs text-slate-400">
-                                Používám prémiové konektory Neutrik (cca 70–160 Kč/ks) a metráž kabelů (cca 40–120 Kč/metr).
-                            </span>
-                        </div>
-
-                        <div class="p-4 bg-slate-900 rounded-xl border border-slate-800">
-                            <span class="text-white font-bold block mb-1">2. Práce za kompletaci kabelu</span>
-                            <span class="text-xs text-slate-400">
-                                Zahrnuje osazení, precizní zapájení obou koncových částí, smršťovací bužírky a závěrečný zátěžový test (viz ceník práce).
-                            </span>
-                        </div>
-                    </div>
-
-                    <div class="mt-6 p-3 bg-amber-500/10 border border-amber-500/30 rounded-lg text-xs text-amber-300">
-                        <i class="fa-solid fa-circle-info mr-1"></i> Množstevní sleva 10–15 % při výrobě či opravě 10 a více kusů kabelů.
-                    </div>
-                </div>
-
-            </div>
+    <section class="section business" id="firmy">
+      <div class="wrap">
+        <div class="business-grid">
+          <div class="business-copy">
+            <span class="eyebrow">Spolupráce B2B</span>
+            <h2>Servis kabeláže pro firmy, které potřebují techniku v provozu.</h2>
+            <p>Pro ozvučovací firmy, půjčovny techniky, nahrávací studia, kluby a produkční týmy. Pošlete seznam kabelů nebo popis zakázky a domluvíme se na vhodném postupu.</p>
+            <p>U většího množství kusů lze domluvit individuální nacenění. Množstevní sleva 10–15 % je uvedena pro výrobu či opravu 10 a více kabelů; konkrétní podmínky potvrdím podle zakázky.</p>
+          </div>
+          <div class="benefits">
+            <article class="benefit"><i class="fa-solid fa-boxes-stacked" aria-hidden="true"></i><h3>Hromadné opravy</h3><p>Dejte dohromady více vadných kabelů a popište požadovaný rozsah servisu.</p></article>
+            <article class="benefit"><i class="fa-solid fa-tags" aria-hidden="true"></i><h3>Značení a přehled</h3><p>U zakázkové výroby lze řešit barevné rozlišení a označení kabeláže.</p></article>
+            <article class="benefit"><i class="fa-solid fa-file-invoice" aria-hidden="true"></i><h3>Nacenění předem</h3><p>U větších nebo složitějších zakázek si nejprve upřesníme rozsah a cenu.</p></article>
+            <article class="benefit"><i class="fa-solid fa-truck-fast" aria-hidden="true"></i><h3>Předání po dohodě</h3><p>Osobní předání v Praze 9 po předchozí domluvě nebo zaslání kabelů po domluvě.</p></article>
+          </div>
         </div>
+        <div class="callout">
+          <div><h3>Máte krabici kabelů k opravě nebo plánujete novou kabeláž?</h3><p>Pošlete počet kusů, typy konektorů a krátký popis. Připravím další postup a nacenění.</p></div>
+          <a class="btn btn-primary" href="#kontakt">Poptat firemní zakázku <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+        </div>
+      </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="kontakt" class="py-20 bg-slate-850 border-b border-slate-800">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-extrabold text-white sm:text-4xl">Kontaktujte mě</h2>
-                <p class="text-slate-400 mt-2">Máte dotaz, potřebujete opravu nebo chcete nacenit výrobu? Napište nebo zavolejte.</p>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                
-                <!-- Contact Info Card -->
-                <div class="space-y-6">
-                    <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800 flex items-start gap-4">
-                        <div class="w-12 h-12 bg-amber-500/10 rounded-xl flex items-center justify-center text-amber-500 text-xl flex-shrink-0">
-                            <i class="fa-solid fa-location-dot"></i>
-                        </div>
-                        <div>
-                            <h4 class="text-white font-bold mb-1">Osobní předání (Praha)</h4>
-                            <p class="text-slate-400 text-sm">Osobní předání po předchozí dohodě v Praze.</p>
-                        </div>
-                    </div>
-
-                    <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800 flex items-start gap-4">
-                        <div class="w-12 h-12 bg-amber-500/10 rounded-xl flex items-center justify-center text-amber-500 text-xl flex-shrink-0">
-                            <i class="fa-solid fa-box"></i>
-                        </div>
-                        <div>
-                            <h4 class="text-white font-bold mb-1">Zaslání přes Zásilkovnu</h4>
-                            <p class="text-slate-400 text-sm">Kabely můžete zabalit a poslat z jakéhokoli výdejního místa Zásilkovny. Po opravě posílám zpět na vaše výdejní místo.</p>
-                        </div>
-                    </div>
-
-                    <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800 flex items-start gap-4">
-                        <div class="w-12 h-12 bg-amber-500/10 rounded-xl flex items-center justify-center text-amber-500 text-xl flex-shrink-0">
-                            <i class="fa-solid fa-envelope"></i>
-                        </div>
-                        <div>
-                            <h4 class="text-white font-bold mb-1">E-mail & Telefon</h4>
-                            <p class="text-slate-400 text-sm font-semibold">Tomáš Kůs</p>
-                            <p class="text-slate-400 text-sm font-semibold">IČO: 30141303 </p>
-                            <p class="text-slate-400 text-sm">E-mail: <a href="mailto:info@kustom.cz" class="text-amber-500 hover:underline">info@kustom.cz</a></p>
-                            <p class="text-slate-400 text-sm">Tel: <a href="tel:+420721671762" class="text-amber-500 hover:underline">+420 721 671 762</a></p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Contact Form -->
-                <div class="bg-slate-900 p-8 rounded-2xl border border-slate-800">
-                    <h3 class="text-xl font-bold text-white mb-6">Poptávkový formulář</h3>
-                    <form action="https://formsubmit.co/info@kustom.cz" method="POST" class="space-y-4">
-                        <!-- FormSubmit settings -->
-                        <input type="hidden" name="_subject" value="Nová poptávka - AudioServis">
-                        <input type="hidden" name="_template" value="table">
-                        <input type="hidden" name="_captcha" value="false">
-
-                        <div>
-                            <label class="block text-xs font-semibold text-slate-400 mb-1">Jméno a příjmení / Název kapely</label>
-                            <input type="text" name="jmeno" required placeholder="Jan Novák" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-slate-200 focus:outline-none focus:border-amber-500 text-sm">
-                        </div>
-
-                        <div>
-                            <label class="block text-xs font-semibold text-slate-400 mb-1">E-mail nebo Telefon</label>
-                            <input type="text" name="kontakt" required placeholder="jan@seznam.cz / +420..." class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-slate-200 focus:outline-none focus:border-amber-500 text-sm">
-                        </div>
-
-                        <div>
-                            <label class="block text-xs font-semibold text-slate-400 mb-1">Poptávaná služba</label>
-                            <select name="sluzba" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-slate-200 focus:outline-none focus:border-amber-500 text-sm">
-                                <option>Oprava poškozených kabelů</option>
-                                <option>Zakázková výroba na míru</option>
-                                <option>Oprava stageboxu / páráku</option>
-                                <option>Jiné / Dotaz</option>
-                            </select>
-                        </div>
-
-                        <div>
-                            <label class="block text-xs font-semibold text-slate-400 mb-1">Popis závady nebo požadované specifikace</label>
-                            <textarea name="popis_poptavky" rows="4" required placeholder="Popište, o jaké kabely se jedná (počet kusů, typ konektorů, přibližná délka)..." class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-slate-200 focus:outline-none focus:border-amber-500 text-sm"></textarea>
-                        </div>
-
-                        <button type="submit" class="w-full py-3.5 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold rounded-lg transition shadow-lg shadow-amber-500/20">
-                            Odeslat poptávku
-                        </button>
-                    </form>
-                </div>
-
-            </div>
+    <section class="section" id="cenik">
+      <div class="wrap">
+        <div class="section-head center">
+          <span class="eyebrow">Ceník</span>
+          <h2>Jasná cena práce, materiál zvlášť</h2>
+          <p>Uvedené částky jsou ceny práce za jeden konektor. Materiál a případné další práce se účtují zvlášť; složitější zakázky nacením individuálně.</p>
         </div>
+        <div class="price-grid">
+          <div class="price-card">
+            <h3><i class="fa-solid fa-wrench accent" aria-hidden="true"></i> Opravy — cena práce</h3>
+            <p class="price-intro">Cena za jeden konektor, pokud není u zakázky dohodnuto jinak.</p>
+            <div class="price-row"><div><strong>Standardní audio konektory</strong><small>XLR, Jack 6,3 mm, RCA; zkrácení a připojení konektoru</small></div><span class="price">90 Kč</span></div>
+            <div class="price-row"><div><strong>Miniaturní konektory</strong><small>Jack 3,5 mm AUX, DIN a jemné pájení malých vodičů</small></div><span class="price">120 Kč</span></div>
+            <div class="price-row"><div><strong>Silové a reproduktorové</strong><small>Speakon, Powercon a práce se silnějšími vodiči</small></div><span class="price">100 Kč</span></div>
+            <div class="price-row"><div><strong>Páráky a stageboxy</strong><small>Vícežilové kabely, rozsah podle konkrétní závady</small></div><span class="price">Dohodou</span></div>
+          </div>
+          <div class="price-card">
+            <h3><i class="fa-solid fa-cable-car accent" aria-hidden="true"></i> Zakázková výroba</h3>
+            <p class="price-intro">Konečná cena se skládá z materiálu a práce za kompletaci.</p>
+            <div class="price-row"><div><strong>Konektory Neutrik</strong><small>Orientačně podle typu a provedení</small></div><span class="price">70–160 Kč/ks</span></div>
+            <div class="price-row"><div><strong>Kabelová metráž</strong><small>Orientačně podle zvoleného typu kabelu</small></div><span class="price">40–120 Kč/m</span></div>
+            <div class="price-row"><div><strong>Kompletace kabelu</strong><small>Osazení obou konců, zapájení a závěrečná kontrola</small></div><span class="price">Dle práce</span></div>
+            <div class="note"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> Množstevní sleva 10–15 % při výrobě či opravě 10 a více kusů kabelů. Konkrétní podmínky potvrzuji podle zakázky.</div>
+          </div>
+        </div>
+        <div style="text-align:center;margin-top:28px"><a class="btn btn-primary" href="#kontakt">Nechat nacenit zakázku <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div>
+      </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="py-8 bg-slate-900 text-center text-xs text-slate-500">
-        <div class="max-w-6xl mx-auto px-4">
-            <p>Tomáš Kůs • servis a výroba kabelů • Praha</p>
-            <p class="mt-1">OSVČ • IČO: 30141303</p>
+    <section class="section" id="postup">
+      <div class="wrap">
+        <div class="section-head center">
+          <span class="eyebrow">Jednoduchý postup</span>
+          <h2>Od poptávky k opravenému kabelu</h2>
+          <p>Nemusíte předem přesně vědět, co je s kabelem špatně. Stačí popsat problém a poslat základní informace.</p>
         </div>
-    </footer>
+        <div class="steps">
+          <article class="step"><h3>Pošlete poptávku</h3><p>Uveďte typ kabelu, počet kusů, konektory a popis závady.</p></article>
+          <article class="step"><h3>Upřesníme rozsah</h3><p>Domluvíme se na opravě, materiálu a ceně podle zakázky.</p></article>
+          <article class="step"><h3>Předáte kabely</h3><p>Osobně v Praze po dohodě nebo zasláním podle domluvených pokynů.</p></article>
+          <article class="step"><h3>Kontrola a předání</h3><p>Po opravě provedu kontrolu spojení a domluvíme předání zpět.</p></article>
+        </div>
+      </div>
+    </section>
 
-    <!-- Interactive JavaScript -->
-    <script>
-        // Mobile Menu Toggle logic
-        const menuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // Close mobile menu on click link
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        });
-    </script>
+    <section class="section contact" id="kontakt">
+      <div class="wrap">
+        <div class="contact-grid">
+          <div>
+            <span class="eyebrow">Kontakt a poptávka</span>
+            <h2>Popište, co potřebujete vyřešit.</h2>
+            <p class="muted" style="margin-top:16px">U větší zakázky připište počet kusů, typy konektorů a požadovaný termín. Ozvu se s dalším postupem.</p>
+            <div class="contact-info">
+              <div class="contact-item"><div class="iconbox"><i class="fa-solid fa-user" aria-hidden="true"></i></div><div><h3>Tomáš Kůs</h3><p>Audio servis a výroba kabeláže · IČO: 30141303</p></div></div>
+              <div class="contact-item"><div class="iconbox"><i class="fa-solid fa-envelope" aria-hidden="true"></i></div><div><h3>E-mail</h3><a href="mailto:info@kustom.cz">info@kustom.cz</a></div></div>
+              <div class="contact-item"><div class="iconbox"><i class="fa-solid fa-phone" aria-hidden="true"></i></div><div><h3>Telefon</h3><a href="tel:+420721671762">+420 721 671 762</a></div></div>
+              <div class="contact-item"><div class="iconbox"><i class="fa-solid fa-box" aria-hidden="true"></i></div><div><h3>Předání kabelů</h3><p>Osobně v Praze 9 po předchozí dohodě nebo zasláním přes Zásilkovnu po domluvě.</p></div></div>
+            </div>
+          </div>
+          <div class="form-card">
+            <h3>Poptávkový formulář</h3>
+            <p>Nezávazně popište opravu nebo výrobu. Pole označená jako povinná je potřeba vyplnit.</p>
+            <form action="https://formsubmit.co/info@kustom.cz" method="POST" enctype="multipart/form-data">
+              <input type="hidden" name="_subject" value="Nová poptávka – Kustom.cz">
+              <input type="hidden" name="_template" value="table">
+              <input type="hidden" name="_captcha" value="false">
+              <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+              <div class="form-grid">
+                <div class="field"><label for="jmeno">Jméno / firma *</label><input id="jmeno" type="text" name="jmeno" autocomplete="name" required placeholder="Jméno nebo název firmy"></div>
+                <div class="field"><label for="kontaktni-udaj">E-mail nebo telefon *</label><input id="kontaktni-udaj" type="text" name="kontakt" required placeholder="Jak vás mohu kontaktovat"></div>
+                <div class="field full"><label for="sluzba">Co potřebujete?</label><select id="sluzba" name="sluzba"><option>Oprava poškozených kabelů</option><option>Zakázková výroba kabeláže</option><option>Oprava páráku / stageboxu</option><option>Větší firemní zakázka</option><option>Jiné / dotaz</option></select></div>
+                <div class="field full"><label for="popis">Popis zakázky *</label><textarea id="popis" name="popis_poptavky" required placeholder="Počet kusů, typy kabelů a konektorů, závada nebo požadovaná délka…"></textarea></div>
+                <div class="field full"><label for="fotky">Fotografie kabelu nebo konektoru (nepovinné)</label><input id="fotky" type="file" name="attachment" accept="image/*" multiple><p class="form-small">Můžete vybrat jednu nebo více fotografií. Pomohou mi závadu předběžně posoudit.</p></div>
+              </div>
+              <button class="btn btn-primary" type="submit">Odeslat nezávaznou poptávku <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+              <p class="form-small">Odesláním formuláře zašlete uvedené údaje za účelem vyřízení poptávky.</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="wrap">
+      <span>© <span id="year">2026</span> Kustom.cz · Tomáš Kůs · IČO: 30141303</span>
+      <div class="footer-links"><a href="#sluzby">Služby</a><a href="#cenik">Ceník</a><a href="#kontakt">Kontakt</a></div>
+    </div>
+  </footer>
+  <script>
+    const menuButton = document.getElementById('mobile-menu-btn');
+    const navLinks = document.getElementById('nav-links');
+    menuButton.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuButton.setAttribute('aria-expanded', String(isOpen));
+      menuButton.setAttribute('aria-label', isOpen ? 'Zavřít navigaci' : 'Otevřít navigaci');
+      menuButton.innerHTML = isOpen
+        ? '<i class="fa-solid fa-xmark" aria-hidden="true"></i>'
+        : '<i class="fa-solid fa-bars" aria-hidden="true"></i>';
+    });
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuButton.setAttribute('aria-expanded', 'false');
+      menuButton.setAttribute('aria-label', 'Otevřít navigaci');
+      menuButton.innerHTML = '<i class="fa-solid fa-bars" aria-hidden="true"></i>';
+    }));
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
