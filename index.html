@@ -149,6 +149,10 @@
     textarea{resize:vertical;min-height:120px}
     .form-card .btn{width:100%;margin-top:17px}
     .form-small{font-size:.77rem;color:#929ca7;margin-top:12px}
+    .form-status{display:none;margin-top:16px;padding:14px 16px;border:1px solid #705727;background:#ffb52e12;border-radius:10px;color:#e8d4a8;font-size:.9rem}
+    .form-status.show{display:block}
+    .form-status.ok{border-color:#2f7d4f;background:#2fa86412;color:#bfe8cf}
+    .form-status a{text-decoration:underline}
     footer{padding:26px 0;color:#89939e;font-size:.82rem}
     footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     .footer-links{display:flex;gap:18px}
@@ -335,7 +339,7 @@
           <div>
             <span class="eyebrow">Kontakt a poptávka</span>
             <h2>Popište, co potřebujete vyřešit.</h2>
-            <p class="muted" style="margin-top:16px">Na poptávku odpovídám do 24h. U větší zakázky připište počet kusů, typy konektorů a požadovaný termín. Ozvu se s dalším postupem.</p>
+            <p class="muted" style="margin-top:16px">U větší zakázky připište počet kusů, typy konektorů a požadovaný termín. Ozvu se s dalším postupem.</p>
             <div class="contact-info">
               <div class="contact-item"><div class="iconbox"><i class="fa-solid fa-user" aria-hidden="true"></i></div><div><h3>Tomáš Kůs</h3><p>Audio servis a výroba kabeláže · IČO: 30141303</p></div></div>
               <div class="contact-item"><div class="iconbox"><i class="fa-solid fa-envelope" aria-hidden="true"></i></div><div><h3>E-mail</h3><a href="mailto:info@kustom.cz">info@kustom.cz</a></div></div>
@@ -359,7 +363,8 @@
                 <div class="field full"><label for="fotky">Fotografie kabelu nebo konektoru (nepovinné)</label><input id="fotky" type="file" name="attachment" accept="image/*" multiple><p class="form-small">Můžete vybrat jednu nebo více fotografií. Pomohou mi závadu předběžně posoudit.</p></div>
               </div>
               <button class="btn btn-primary" type="submit">Odeslat nezávaznou poptávku <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
-              <p class="form-small">Odesláním formuláře zašlete uvedené údaje za účelem vyřízení poptávky.</p>
+              <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
+              <p class="form-small">Odesláním formuláře zašlete uvedené údaje za účelem vyřízení poptávky. Nefunguje formulář? Napište na <a href="mailto:info@kustom.cz">info@kustom.cz</a> nebo volejte <a href="tel:+420721671762">+420 721 671 762</a>.</p>
             </form>
           </div>
         </div>
@@ -390,6 +395,78 @@
       menuButton.innerHTML = '<i class="fa-solid fa-bars" aria-hidden="true"></i>';
     }));
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Odeslání poptávky přes vlastní Cloudflare Worker (viz NASTAVENI.md).
+    // Dokud je FORM_ENDPOINT prázdný, formulář se odesílá po staru přes FormSubmit.
+    const FORM_ENDPOINT = ""; // např. "https://kustom-poptavka.vase-jmeno.workers.dev"
+    (function () {
+      const form = document.querySelector('#kontakt form');
+      const status = document.getElementById('form-status');
+      if (!form || !status || !FORM_ENDPOINT) return;
+      const button = form.querySelector('button[type="submit"]');
+      const buttonHtml = button.innerHTML;
+      const MAX_SIDE = 1600, QUALITY = 0.82, MAX_TOTAL = 10 * 1024 * 1024;
+      const fallback = 'Napište prosím na <a href="mailto:info@kustom.cz">info@kustom.cz</a> nebo volejte <a href="tel:+420721671762">+420 721 671 762</a>.';
+
+      function show(html, ok) {
+        status.className = 'form-status show' + (ok ? ' ok' : '');
+        status.innerHTML = html;
+        status.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+
+      // Fotky z mobilu mívají několik MB. Zmenšíme je v prohlížeči, ať se vejdou do limitu.
+      async function shrink(file) {
+        if (!file.type || !file.type.startsWith('image/')) return file;
+        try {
+          const bmp = await createImageBitmap(file, { imageOrientation: 'from-image' });
+          const scale = Math.min(1, MAX_SIDE / Math.max(bmp.width, bmp.height));
+          const canvas = document.createElement('canvas');
+          canvas.width = Math.round(bmp.width * scale);
+          canvas.height = Math.round(bmp.height * scale);
+          canvas.getContext('2d').drawImage(bmp, 0, 0, canvas.width, canvas.height);
+          const blob = await new Promise(r => canvas.toBlob(r, 'image/jpeg', QUALITY));
+          if (!blob || blob.size >= file.size) return file;
+          return new File([blob], file.name.replace(/\.[^.]+$/, '') + '.jpg', { type: 'image/jpeg' });
+        } catch (e) {
+          return file;
+        }
+      }
+
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        button.disabled = true;
+        button.textContent = 'Odesílám…';
+        status.className = 'form-status';
+        try {
+          const data = new FormData(form);
+          const photos = data.getAll('attachment').filter(f => f && f.size > 0);
+          data.delete('attachment');
+          let total = 0;
+          for (const photo of photos) {
+            const small = await shrink(photo);
+            total += small.size;
+            data.append('attachment', small, small.name);
+          }
+          if (total > MAX_TOTAL) {
+            show('Fotky jsou dohromady příliš velké (limit 10 MB). Přiložte jich méně, nebo je pošlete na <a href="mailto:info@kustom.cz">info@kustom.cz</a>.', false);
+            return;
+          }
+          const response = await fetch(FORM_ENDPOINT, { method: 'POST', body: data });
+          const result = await response.json().catch(() => ({}));
+          if (response.ok && result.ok) {
+            form.reset();
+            show('Děkuji, poptávka je odeslána. Ozvu se vám co nejdříve.', true);
+          } else {
+            show('Poptávku se nepodařilo odeslat. ' + fallback, false);
+          }
+        } catch (e) {
+          show('Poptávku se nepodařilo odeslat. ' + fallback, false);
+        } finally {
+          button.disabled = false;
+          button.innerHTML = buttonHtml;
+        }
+      });
+    })();
   </script>
 </body>
 </html>
